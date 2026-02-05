@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Task</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 min-h-screen text-white flex items-center justify-center">
+
+  <div class="w-full max-w-2xl bg-zinc-800 p-8 rounded-xl shadow-lg">
+    
+    <a href="/" class="text-blue-400 mb-4 inline-block">← Back</a>
+
+    <h1 class="text-3xl mb-6 tracking-tight text-center">Edit Task</h1>
+
+    <form action="/edit/<%= filename %>" method="post" class="space-y-4">
+
+      <input 
+        type="text" 
+        name="newtitle"
+        value="<%= filename.replace('.txt','') %>"
+        placeholder="Rename title..."
+        class="w-full p-3 rounded bg-zinc-900 outline-none"
+      >
+
+      <textarea 
+        name="newdata"
+        rows="10"
+        placeholder="New description..."
+        class="w-full p-3 rounded bg-zinc-900 outline-none"
+      ><%= data %></textarea>
+
+      <div class="flex justify-center">
+        <button class="bg-green-600 px-8 py-2 rounded hover:bg-green-700 transition">
+          Save Changes
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+</html>

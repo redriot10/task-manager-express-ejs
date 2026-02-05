@@ -38,12 +38,25 @@
   <% if (files.length > 0) { %>
 
     <% files.forEach(function(val) { %>
-      <div class="task w-72 px-3 py-4 rounded-md bg-zinc-800">
-        <h1 class="text-white text-3xl tracking-tighter">
-          <%= val %>
-        </h1>
-        <a class="text-blue-500 inline-block mt-3" href="#">
-          Read More.
+     <div class="task w-72 px-3 py-4 rounded-md bg-zinc-800 overflow-hidden">
+
+  <h1 class="text-white text-3xl tracking-tighter break-all">
+    <%= val %>
+  </h1>
+
+  <a class="text-blue-500 inline-block mt-3" href="/file/<%= val %>">
+    Read More
+  </a>
+
+  <div class="flex justify-center">
+    <a class="text-green-500 mt-2" href="/edit/<%= val %>">
+      Edit
+    </a>
+  </div>
+
+</div>
+
+
         </a>
       </div>
     <% }) %>
@@ -52,11 +65,7 @@
     <h3 class="text-zinc-600">no tasks yet</h3>
   <% } %>
 
-</div>
 
-    </div>
-
-  </div>
 
 </body>
 </html>
