@@ -21,6 +21,12 @@
       <%= data %>
     </p>
 
+    <div class="mt-6">
+      <form action="/delete/<%= filename %>" method="post" onsubmit="return confirm('Delete this task?')">
+        <button type="submit" class="bg-red-600 px-4 py-2 rounded">Delete Task</button>
+      </form>
+    </div>
+
   </div>
 </body>
 </html>

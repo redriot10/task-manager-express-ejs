@@ -48,10 +48,14 @@
     Read More
   </a>
 
-  <div class="flex justify-center">
-    <a class="text-green-500 mt-2" href="/edit/<%= val %>">
+  <div class="flex justify-center gap-4 mt-2">
+    <a class="text-green-500" href="/edit/<%= val %>">
       Edit
     </a>
+
+    <form action="/delete/<%= val %>" method="post" onsubmit="return confirm('Delete this task?')">
+      <button type="submit" class="text-red-500">Delete</button>
+    </form>
   </div>
 
 </div>
