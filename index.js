@@ -74,6 +74,16 @@ app.post("/edit/:filename", function (req, res) {
   });
 });
 
+app.post("/delete/:filename", function (req, res) {
+  fs.unlink(`./files/${req.params.filename}`, function (err) {
+    if (err) {
+      return res.send("Error deleting file");
+    }
+
+    res.redirect("/");
+  });
+});
+
 
 
 

@@ -6,6 +6,8 @@ A task management application built with Node.js, Express, and EJS that allows u
 - Add tasks with title and description
 - View all tasks
 - File-based storage
+- Edit existing tasks
+- Delete tasks
 - Simple UI using EJS templates
 
 ## Tech Stack
@@ -21,8 +23,6 @@ A task management application built with Node.js, Express, and EJS that allows u
 3. Start the server
 4. Open in browser
 5. ## Future Improvements
-- Edit task feature
-- Delete task feature
 - Authentication
 
 
