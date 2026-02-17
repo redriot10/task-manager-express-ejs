@@ -8,68 +8,96 @@
 
 <body class="bg-zinc-900 min-h-screen text-white">
 
-  <div class="max-w-5xl mx-auto p-10">
+  <div class="max-w-6xl mx-auto p-10">
 
     <!-- Form -->
-    <div class="form p-10 text-white">
-      <form action ="/create" method="post">
-      <input 
-        type="text" 
-        placeholder="Title goes here.." name="title"
-        class="w-full mb-4 p-3 rounded-md bg-zinc-800 outline-none"
-      >
+    <div class="mb-12">
+      <form action="/create" method="post" class="space-y-4">
+        
+        <input 
+          type="text" 
+          name="title"
+          placeholder="Title goes here..."
+          required
+          class="w-full p-3 rounded-md bg-zinc-800 outline-none focus:ring-2 focus:ring-blue-600"
+        >
 
-      <textarea 
-        placeholder="Write your task details here..." name="details" 
-        class="w-full mb-4 p-3 rounded-md bg-zinc-800 outline-none"
-      ></textarea>
+        <textarea 
+          name="details"
+          placeholder="Write your task details here..."
+          required
+          class="w-full p-3 rounded-md bg-zinc-800 outline-none focus:ring-2 focus:ring-blue-600"
+        ></textarea>
 
-      <button class="bg-blue-600 px-5 py-2 rounded-md">
-        Create Task
-      </button>
-    </form>
+        <button 
+          class="bg-blue-600 hover:bg-blue-700 transition px-5 py-2 rounded-md">
+          Create Task
+        </button>
+
+      </form>
     </div>
 
     <!-- Tasks -->
-    <div class="tasks p-10 flex gap-6">
+    <% if (files.length > 0) { %>
 
-      
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-  <% if (files.length > 0) { %>
+        <% files.forEach(function(val) { %>
 
-    <% files.forEach(function(val) { %>
-     <div class="task w-72 px-3 py-4 rounded-md bg-zinc-800 overflow-hidden">
+          <div class="bg-zinc-800 rounded-xl p-5 shadow-md hover:shadow-lg transition duration-200 flex flex-col justify-between h-48 border border-zinc-700">
 
-  <h1 class="text-white text-3xl tracking-tighter break-all">
-    <%= val %>
-  </h1>
+            <!-- Title + Read -->
+            <div>
+              <h2 class="text-lg font-semibold truncate">
+                <%= val %>
+              </h2>
 
-  <a class="text-blue-500 inline-block mt-3" href="/file/<%= val %>">
-    Read More
-  </a>
+              <a 
+                href="/file/<%= val %>" 
+                class="text-blue-400 text-sm mt-2 inline-block hover:underline">
+                Read More
+              </a>
+            </div>
 
-  <div class="flex justify-center gap-4 mt-2">
-    <a class="text-green-500" href="/edit/<%= val %>">
-      Edit
-    </a>
+            <!-- Actions -->
+            <div class="flex justify-between items-center mt-4 text-sm">
+              
+              <a 
+                href="/edit/<%= val %>" 
+                class="text-green-400 hover:text-green-300">
+                Edit
+              </a>
 
-    <form action="/delete/<%= val %>" method="post" onsubmit="return confirm('Delete this task?')">
-      <button type="submit" class="text-red-500">Delete</button>
-    </form>
-  </div>
+              <form 
+                action="/delete/<%= val %>" 
+                method="post"
+                onsubmit="return confirm('Delete this task?')">
+                
+                <button 
+                  type="submit" 
+                  class="text-red-400 hover:text-red-300">
+                  Delete
+                </button>
 
-</div>
+              </form>
 
+            </div>
 
-        </a>
+          </div>
+
+        <% }) %>
+
       </div>
-    <% }) %>
 
-  <% } else { %>
-    <h3 class="text-zinc-600">no tasks yet</h3>
-  <% } %>
+    <% } else { %>
 
+      <h3 class="text-zinc-500 text-center mt-10">
+        No tasks yet.
+      </h3>
 
+    <% } %>
+
+  </div>
 
 </body>
 </html>
